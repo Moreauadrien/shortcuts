@@ -10,7 +10,7 @@ document.head.innerHTML += `
             text-align: center;
             position: fixed;
             top: 0;
-            z-index: 10;
+            z-index: 10;s
         }
         .content {
             position: absolute;
@@ -39,6 +39,7 @@ document.head.innerHTML += `
             padding-top: calc(.5em - 1px);
             text-align: center;
             white-space: nowrap;
+            font-size: 16px;
         }
         .is-primary {
             background-color: #00d1b2;
