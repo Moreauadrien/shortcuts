@@ -77,11 +77,11 @@ document.body.innerHTML += `
                 <button class="button is-rounded is-info">Number</button>
             </div>
 
-            <div class="stack-selection hidden">
+            <div class="stack-selector hidden">
                 <p>stack</p>
             </div>
 
-            <div class="number-selection hidden">
+            <div class="number-selector hidden">
                 <input type="tel" class="input" placeholder="Number you want to force">
                 <br><br>
             </div>
