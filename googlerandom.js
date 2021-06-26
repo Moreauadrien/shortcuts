@@ -39,7 +39,6 @@ document.head.innerHTML += `
             padding-top: calc(.5em - 1px);
             text-align: center;
             white-space: nowrap;
-            font-size: 16px;
         }
         .is-primary {
             background-color: #00d1b2;
