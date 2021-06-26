@@ -55,6 +55,10 @@ document.head.innerHTML += `
             padding-left: calc(1em + .25em);
             padding-right: calc(1em + .25em);
         }
+        .hidden {
+            display: none;
+        }
+
         .setmode > .button {
             width: 85%;
             font-size: 16px;
@@ -62,7 +66,7 @@ document.head.innerHTML += `
 
     </style>
 `
-
+// Create popup
 document.body.innerHTML += `
     <div class="popup">
         <div class="content">
@@ -72,6 +76,23 @@ document.body.innerHTML += `
                 <br/>
                 <button class="button is-rounded is-info">Number</button>
             </div>
+
+            <div class="stack-selection hidden">
+                <p>stack</p>
+            </div>
+
+            <div class="number-selection hidden">
+                <input type="tel" class="input" placeholder="Number you want to force">
+                <br><br>
+            </div>
         </div>
     </div>
 `
+
+const setmodeDiv = document.querySelector('.setmode')
+setmodeDiv.querySelectorAll('.button').forEach(elem => {
+    elem.addEventListener('click', () => {
+        setmodeDiv.classList.add('hidden')
+        document.querySelector(`.${elem.innerText.toLowerCase()}-selector`).classList.remove("hidden")
+    })
+})
