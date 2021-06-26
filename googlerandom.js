@@ -10,7 +10,7 @@ document.head.innerHTML += `
             text-align: center;
             position: fixed;
             top: 0;
-            z-index: 10;s
+            z-index: 10;
         }
         .content {
             position: absolute;
@@ -55,9 +55,6 @@ document.head.innerHTML += `
             padding-left: calc(1em + .25em);
             padding-right: calc(1em + .25em);
         }
-        .setmode > .button {
-            width: 80%;
-        }
 
     </style>
 `
@@ -65,12 +62,16 @@ document.head.innerHTML += `
 document.body.innerHTML += `
     <div class="popup">
         <div class="content">
-            <div class="setmode">
-                <button class="button is-rounded is-primary">Stack</button>
-                <br/>
-                <br/>
-                <button class="button is-rounded is-info">Number</button>
-            </div>
+            <p>test</p>
         </div>
     </div>
 `
+
+/*
+<div class="setmode">
+    <button class="button is-rounded is-primary">Stack</button>
+    <br/>
+    <br/>
+    <button class="button is-rounded is-info">Number</button>
+</div>
+*/
