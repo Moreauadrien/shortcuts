@@ -72,6 +72,8 @@ document.body.innerHTML += `
                 <br/>
                 <button class="button is-rounded is-info">Number</button>
             </div>
+
+            <p>Bonjour</p>
         </div>
     </div>
 `
