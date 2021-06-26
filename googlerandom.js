@@ -57,7 +57,7 @@ document.head.innerHTML += `
         }
         .setmode > .button {
             width: 85%;
-            font-size: 16px;
+            font-size: 24px;
         }
 
     </style>
