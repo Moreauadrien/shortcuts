@@ -67,7 +67,7 @@ document.body.innerHTML += `
     <div class="popup">
         <div class="content">
             <div class="setmode">
-                <button class="button is-rounded is-primary">Stack</button>
+                <button class="button is-rounded is-primary">Stack Selection</button>
                 <br/>
                 <br/>
                 <button class="button is-rounded is-info">Number</button>
