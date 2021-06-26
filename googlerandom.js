@@ -55,6 +55,10 @@ document.head.innerHTML += `
             padding-left: calc(1em + .25em);
             padding-right: calc(1em + .25em);
         }
+        .content > .button {
+            width: 85%;
+            font-size: 16px;
+        }
 
     </style>
 `
