@@ -62,16 +62,12 @@ document.head.innerHTML += `
 document.body.innerHTML += `
     <div class="popup">
         <div class="content">
-            <p>test</p>
+            <div class="setmode">
+                <button class="button is-rounded is-primary">Stack</button>
+                <br/>
+                <br/>
+                <button class="button is-rounded is-info">Number</button>
+            </div>
         </div>
     </div>
 `
-
-/*
-<div class="setmode">
-    <button class="button is-rounded is-primary">Stack</button>
-    <br/>
-    <br/>
-    <button class="button is-rounded is-info">Number</button>
-</div>
-*/
