@@ -57,7 +57,7 @@ document.head.innerHTML += `
         }
         .setmode > .button {
             width: 85%;
-            font-size: 24px;
+            font-size: 16px;
         }
 
     </style>
@@ -72,8 +72,6 @@ document.body.innerHTML += `
                 <br/>
                 <button class="button is-rounded is-info">Number</button>
             </div>
-
-            <p>Bonjour</p>
         </div>
     </div>
 `
