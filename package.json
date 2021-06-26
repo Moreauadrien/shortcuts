@@ -1,0 +1,11 @@
+{
+  "name": "Shortcuts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/moreauadrien/Shortcuts.git",
+  "author": "Adrien MOREAU <moreauadrien92@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "push": "git add . && git commit -m 'commit' && git push origin main"
+  }
+}
