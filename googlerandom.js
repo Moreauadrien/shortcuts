@@ -302,11 +302,11 @@ disableButton()
 
 
 const displayNumber = (number) => {
-    document.querySelector(".gws-csf-randomnumber__result").innerHTML = number
+    document.querySelector(".gws-csf-randomnumber__result").innerText = number
 }
 
 const getCurrentNumber = () => {
-    return parseInt(document.querySelector(".gws-csf-randomnumber__result").innerHTML)
+    return parseInt(document.querySelector(".gws-csf-randomnumber__result").innerText)
 }
 
 const generateRandomNumber = (min, max) => {
