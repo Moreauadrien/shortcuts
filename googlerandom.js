@@ -80,9 +80,36 @@ document.head.innerHTML += `
             button {
                 outline: 0;
             }
-            
-            
+            .suits {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-gap: 10px;
+            }
+            .suits > .button {
+                font-size: 16px;
+                background-color: #e3ecfa;
+                color: #2160c4;
+                border: 1px #3273dc solid;
+            }
+            .validate {
+                background-color: #3ec46d;
+                color: white;
+                font-size: 16px;
+                width: 70%;
+                margin: auto !important;
+            }
 
+            #valueSelected {
+                background-color: #00d1b2;
+                border: none;
+                color: #fff;
+            }
+
+            #suitSelected {
+                background-color: #485fc7;
+                border: none;
+                color: #fff;
+            }
         </style>
     `
 // Create popup
@@ -113,12 +140,20 @@ document.body.innerHTML += `
                         <div class="button" valueCode="K">King</div>
                     </div>
 
+                    <br />
+                    <br />
+
                     <div class="suits">
                         <div class="button" suitCode="s">Spades</div>
                         <div class="button" suitCode="h">Hearts</div>
                         <div class="button" suitCode="c">Clubs</div>
                         <div class="button" suitCode="d">Diamonds</div>
                     </div>
+
+                    <br />
+                    <br />
+
+                    <div class="button validate" >Validate</div>
                 </div>
 
                 <div class="number-selector hidden">
@@ -136,3 +171,25 @@ setmodeDiv.querySelectorAll('.button').forEach(elem => {
         document.querySelector(`.${elem.innerText.toLowerCase()}-selector`).classList.remove("hidden")
     })
 })
+
+let currentValue
+let currentSuit
+const addClickEvent = (elements, isSuit) => {
+    elements.forEach(elem => {
+        elem.addEventListener('click', () => {
+            if (isSuit) {
+                if (currentSuit != null) document.querySelector(`[suitCode=${currentSuit}]`).id = ''
+                elem.id = 'suitSelected'
+                currentSuit = elem.getAttribute('suitCode')
+            } else {
+                if (currentValue != null) document.querySelector(`[valueCode=${currentValue}]`).id = ''
+                elem.id = 'valueSelected'
+                currentSuit = elem.getAttribute('valueCode')
+            }
+        })
+    })
+}
+
+
+addClickEvent(document.querySelectorAll('.values > .button'), false)
+addClickEvent(document.querySelectorAll('.suits > .button'), true)
