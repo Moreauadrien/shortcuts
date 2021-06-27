@@ -208,6 +208,6 @@ addClickEvent(document.querySelectorAll('.values > .button'), false)
 addClickEvent(document.querySelectorAll('.suits > .button'), true)
 
 
-document.querySelector('.values > .validate').addEventListener('click', () => {
+document.querySelector('.stack-selector > .validate').addEventListener('click', () => {
 
 })
