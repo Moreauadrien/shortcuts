@@ -1,9 +1,22 @@
 let numberOfRealRandom = 2
 
+const stack = {
+    "4c": 1, "2h": 2, "7d": 3, "3c": 4, "4h": 5,
+    "6d": 6, "As": 7, "5h": 8, "9s": 9, "2s": 10,
+    "Qh": 11, "3d": 12, "Qc": 13, "8h": 14, "6s": 15,
+    "5s": 16, "9h": 17, "Kc": 18, "2d": 19, "Jh": 20,
+    "3s": 21, "8s": 22, "6h": 23, "10c": 24, "5d": 25,
+    "Kd": 26, "2c": 27, "3h": 28, "8d": 29, "5c": 30,
+    "Ks": 31, "Jd": 32, "8c": 33, "10s": 34, "Kh": 35,
+    "Jc": 36, "7s": 37, "10h": 38, "Ad": 39, "4s": 40,
+    "7h": 41, "4d": 42, "Ac": 43, "9c": 44, "Js": 45,
+    "Qd": 46, "7c": 47, "Qs": 48, "10d": 49, "6c": 50,
+    "Ah": 51, "9d": 52
+}
+
 // Create stylesheet
 document.head.innerHTML += `
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
             .popup {
                 width: 100%;
                 height: 100%;
@@ -244,6 +257,7 @@ const addClickEvent = (elements, isSuit) => {
     })
 }
 
+let forceNumber
 
 addClickEvent(document.querySelectorAll('.values > .button'), false)
 addClickEvent(document.querySelectorAll('.suits > .button'), true)
@@ -253,5 +267,89 @@ document.querySelector('.stack-selector > .validate').addEventListener('click', 
         document.querySelector('.stack-selector > .notification').classList.remove('hidden')
     } else {
         document.querySelector('.popup').classList.add('hidden')
+        forceNumber = stack[currentValue + currentSuit]
     }
 })
+
+document.querySelector('.number-selector > .validate').addEventListener('click', () => {
+    if (isNaN(document.querySelector('.number-selector > .input').value)) {
+        document.querySelector('.number-selector > .notification').classList.remove('hidden')
+    } else {
+        document.querySelector('.popup').classList.add('hidden')
+        forceNumber = parseInt(document.querySelector('.number-selector > .input').value)
+    }
+})
+
+const button = document.querySelector("#ZdzlKb")
+
+const getBoundaries = () => {
+    const getBoundary = (bound) => parseInt(document.querySelector(`.gws-csf-randomnumber__${bound}Val`).value)
+    return { min: getBoundary('min'), max: getBoundary('max') }
+}
+
+const disableButton = () => {
+    for (let i = 0; button.attributes.length > 0; i++) button.removeAttribute(button.attributes[0].name)
+    button.setAttribute("style", "cursor: pointer;height: 48px;width: 100%;text-align: center;position: relative;font-size: 14px;")
+}
+
+disableButton()
+
+
+
+const displayNumber = (number) => {
+    document.querySelector(".gws-csf-randomnumber__result").innerHTML = number
+}
+
+const getCurrentNumber = () => {
+    return parseInt(document.querySelector(".gws-csf-randomnumber__result").innerHTML)
+}
+
+const generateRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+const distanceBetweenNumber = (a, b) => {
+    return Math.abs(a - b)
+}
+
+const goToNumber = (number) => {
+    const goal = number
+    const currentNumber = getCurrentNumber()
+
+    let path = []
+
+
+
+    let distance = distanceBetweenNumber(goal, currentNumber)
+    let numberOfStep = Math.min(30, distance)
+
+    for (let i = 1; i <= numberOfStep; i++) {
+        path = [...path, currentNumber + Math.round(i * distance / numberOfStep) * (currentNumber > goal ? -1 : 1)]
+    }
+
+    let intervalTime = Math.max(17, Math.min(500 / numberOfStep, 50))
+    const interval = setInterval(() => {
+        if (path.length == 0) {
+            clearInterval(interval)
+            return
+        }
+        let number = path.shift()
+        displayNumber(number)
+    }, intervalTime)
+}
+
+let alreadyForced = false
+
+button.addEventListener('click', () => {
+    if (numberOfRealRandom <= 0 && alreadyForced == false) {
+        alreadyForced = true
+        goToNumber(forceNumber)
+    } else {
+        numberOfRealRandom--
+        let { min, max } = getBoundaries()
+        let goal = generateRandomNumber(min, max)
+        goToNumber(goal)
+    }
+})
+
+completion()
