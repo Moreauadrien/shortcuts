@@ -355,14 +355,10 @@ button.addEventListener('click', () => {
         let { min, max } = getBoundaries()
         let goal = generateRandomNumber(min, max)
 
-        if (alreadyForced == false) {
+        if (alreadyForced == false && distanceBetweenNumber(min, max) > 10) {
             let currentNumber = getCurrentNumber()
-            let numberOfTry = 0
-            while (goal == forceNumber || goal == currentNumber) {
-                if (numberOfTry == 10) break
+            while (goal == forceNumber || goal == currentNumber)
                 goal = generateRandomNumber(min, max)
-                numberOfTry++
-            }
         }
 
         goToNumber(goal)
