@@ -166,7 +166,6 @@ document.head.innerHTML += `
         
     </style>
 `
-
 document.body.innerHTML += `
     <div class="popup">
         <div class="content">
