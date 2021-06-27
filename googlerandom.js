@@ -14,7 +14,6 @@ const stack = {
     "Ah": 51, "9d": 52
 }
 
-// Create stylesheet
 document.head.innerHTML += `
     <style>
         .popup {
@@ -167,7 +166,7 @@ document.head.innerHTML += `
         
     </style>
 `
-// Create popup
+
 document.body.innerHTML += `
     <div class="popup">
         <div class="content">
