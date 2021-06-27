@@ -3,6 +3,7 @@ let numberOfRealRandom = 2
 // Create stylesheet
 document.head.innerHTML += `
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
             .popup {
                 width: 100%;
                 height: 100%;
@@ -39,7 +40,6 @@ document.head.innerHTML += `
                 padding-top: calc(.5em - 1px);
                 text-align: center;
                 white-space: nowrap;
-                font-family: Roboto-Medium,HelveticaNeue-Medium,Helvetica Neue,sans-serif-medium,Arial,sans-serif !important;
             }
             .is-primary {
                 background-color: #00d1b2;
@@ -104,11 +104,20 @@ document.head.innerHTML += `
                 border: none;
                 color: #fff;
             }
-
             #suitSelected {
                 background-color: #485fc7;
                 border: none;
                 color: #fff;
+            }
+            .notification {
+                font-size: 16px;
+                background-color: #f14668;
+                color: #fff;
+                margin-bottom: 1.5rem;
+                border-radius: 4px;
+                position: relative;
+                padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+                font-family: "Segoe UI";
             }
         </style>
     `
@@ -153,7 +162,11 @@ document.body.innerHTML += `
                     <br />
                     <br />
 
-                    <div class="button validate" >Validate</div>
+                    <div class="notification hidden">
+                        You must choose a value and a suit
+                    </div>
+
+                    <div class="button validate">Validate</div>
                 </div>
 
                 <div class="number-selector hidden">
@@ -178,11 +191,11 @@ const addClickEvent = (elements, isSuit) => {
     elements.forEach(elem => {
         elem.addEventListener('click', () => {
             if (isSuit) {
-                if (currentSuit != null) document.querySelector(`[suitCode=${currentSuit}]`).id = ''
+                if (currentSuit != null) document.querySelector('#suitSelected').id = ''
                 elem.id = 'suitSelected'
                 currentSuit = elem.getAttribute('suitCode')
             } else {
-                if (currentValue != null) document.querySelector(`[valueCode=${currentValue}]`).id = ''
+                if (currentValue != null) document.querySelector('#valueSelected').id = ''
                 elem.id = 'valueSelected'
                 currentValue = elem.getAttribute('valueCode')
             }
@@ -193,3 +206,8 @@ const addClickEvent = (elements, isSuit) => {
 
 addClickEvent(document.querySelectorAll('.values > .button'), false)
 addClickEvent(document.querySelectorAll('.suits > .button'), true)
+
+
+document.querySelector('.values > .validate').addEventListener('click', () => {
+
+})
