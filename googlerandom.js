@@ -354,6 +354,17 @@ button.addEventListener('click', () => {
         numberOfRealRandom--
         let { min, max } = getBoundaries()
         let goal = generateRandomNumber(min, max)
+
+        if (alreadyForced == false) {
+            let currentNumber = getCurrentNumber()
+            let numberOfTry = 0
+            while (goal == forceNumber || goal == currentNumber) {
+                if (numberOfTry == 10) break
+                goal = generateRandomNumber(min, max)
+                numberOfTry++
+            }
+        }
+
         goToNumber(goal)
     }
 })
