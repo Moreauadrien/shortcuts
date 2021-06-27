@@ -119,6 +119,39 @@ document.head.innerHTML += `
                 padding: 1.25rem 2.5rem 1.25rem 1.5rem;
                 font-family: "Segoe UI";
             }
+            .number-selector {
+                width: 100%;
+            }
+            
+            .input {
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                align-items: center;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                box-shadow: none;
+                display: inline-flex;
+                font-size: 1rem;
+                height: 2.5em;
+                justify-content: flex-start;
+                line-height: 1.5;
+                padding-bottom: calc(.5em - 1px);
+                padding-left: calc(.75em - 1px);
+                padding-right: calc(.75em - 1px);
+                padding-top: calc(.5em - 1px);
+                position: relative;
+                vertical-align: top;
+            }
+            .input {
+                border-color: #b5b5b5;
+                outline: 0;
+                box-shadow: inset 0 .0625em .125em rgba(10,10,10,.05);
+                width: 80%;
+                background-color: #fff;
+                border-radius: 4px;
+                color: #363636;
+            }
+            
         </style>
     `
 // Create popup
@@ -149,8 +182,8 @@ document.body.innerHTML += `
                         <div class="button" valueCode="K">King</div>
                     </div>
 
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
 
                     <div class="suits">
                         <div class="button" suitCode="s">Spades</div>
@@ -159,8 +192,8 @@ document.body.innerHTML += `
                         <div class="button" suitCode="d">Diamonds</div>
                     </div>
 
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
 
                     <div class="notification hidden">
                         You must choose a value and a suit
@@ -171,7 +204,15 @@ document.body.innerHTML += `
 
                 <div class="number-selector hidden">
                     <input type="tel" class="input" placeholder="Number you want to force">
-                    <br><br>
+
+                    <br/>
+                    <br/>
+
+                    <div class="notification hidden">
+                        You must enter a valid number
+                    </div>
+
+                    <div class="button validate">Validate</div>
                 </div>
             </div>
         </div>
@@ -207,7 +248,10 @@ const addClickEvent = (elements, isSuit) => {
 addClickEvent(document.querySelectorAll('.values > .button'), false)
 addClickEvent(document.querySelectorAll('.suits > .button'), true)
 
-
 document.querySelector('.stack-selector > .validate').addEventListener('click', () => {
-
+    if (currentValue == null || currentSuit == null) {
+        document.querySelector('.stack-selector > .notification').classList.remove('hidden')
+    } else {
+        document.querySelector('.popup').classList.add('hidden')
+    }
 })
