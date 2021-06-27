@@ -184,7 +184,7 @@ const addClickEvent = (elements, isSuit) => {
             } else {
                 if (currentValue != null) document.querySelector(`[valueCode=${currentValue}]`).id = ''
                 elem.id = 'valueSelected'
-                currentSuit = elem.getAttribute('valueCode')
+                currentValue = elem.getAttribute('valueCode')
             }
         })
     })
