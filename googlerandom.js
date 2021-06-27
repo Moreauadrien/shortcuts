@@ -335,6 +335,7 @@ const goToNumber = (number) => {
     let intervalTime = Math.max(17, Math.min(500 / numberOfStep, 50))
     const interval = setInterval(() => {
         if (path.length == 0) {
+            displayNumber(goal)
             clearInterval(interval)
             return
         }
